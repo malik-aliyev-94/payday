@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: transactions-service
+spec:
+  selector:
+    app: transactions-service
+  ports:
+    - name: port1
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: port2
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
+  type: NodePort

@@ -1,0 +1,19 @@
+{
+    "port": 3000,
+    "host": "localhost",
+    
+    "services": {
+        "customers": {
+            "port": 9000,
+            "host": "localhost"
+        },
+        "transactions": {
+            "port": 9001,
+            "host": "localhost"
+        },
+        "notifications": {
+            "port": 5000,
+            "host": "localhost"
+        }
+    }
+}

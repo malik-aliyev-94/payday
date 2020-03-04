@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customers-service
+  labels:
+    app: payday
+spec:
+  # replicas: 1
+  selector:
+    matchLabels:
+      app: payday
+  template:
+    metadata:
+      labels:
+        app: payday
+    spec:
+      containers:
+      - name: customers-service
+        image: malikaliyev94/customers-service:latest
+        env:
+            - name: MYSQL_HOST
+              value: customers-service-database
+            # - name: MYSQL_PASSWORD
+            #   value: password
+            # - name: MYSQL_ROOT_PASSWORD
+              # value: password
+            # - name: MYSQL_DATABASE
+            #   value: dockercon2017
+        ports:
+        - containerPort: 9000
+          protocol: TCP

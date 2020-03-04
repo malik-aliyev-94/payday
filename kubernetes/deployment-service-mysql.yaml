@@ -1,0 +1,50 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customers-service-database
+  labels:
+    app: payday
+spec:
+  ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+  selector:
+    app: payday
+    tier: database
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customers-service-database
+  labels:
+    app: payday
+spec:
+  selector:
+    matchLabels:
+      app: payday
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: payday
+        tier: database
+    spec:
+      containers:
+        - image: mysql:5.7
+          name: customers-service-database
+          env:
+            # - name: MYSQL_USER
+            #   value: michaelbolton
+            # - name: MYSQL_PASSWORD
+            #   value: password
+            - name: MYSQL_ROOT_PASSWORD
+              value: password
+            # - name: MYSQL_DATABASE
+            #   value: dockercon2017
+
+          ports:
+            - containerPort: 3306
+              name: db
