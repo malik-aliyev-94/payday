@@ -22,7 +22,7 @@ public class TransactionController {
 
 	@GetMapping(path="/transactions/account/{account}")
 	public ResponseEntity<ApiResponse> getAllCustomerTransactions(@PathVariable("account") int account) {
-		return new ResponseEntity<>(new ApiResponse(TransactionRepository.findByAccount(account), null), HttpStatus.OK);
+		return new ResponseEntity<>(new ApiResponse(TransactionRepository.findByAccountOrderByDateOfTransactionDesc(account), null), HttpStatus.OK);
 	}
 
 	@GetMapping(path="/transactions/{id}")
@@ -35,7 +35,7 @@ public class TransactionController {
 		
 		Instant instant = Instant.now();
 		long timeStamp = instant.toEpochMilli();
-		transaction.setDate_of_transaction(timeStamp);
+		transaction.setDateOfTransaction(timeStamp);
 
 		// int customer -> must be integer > 0
 		// int account  ->  must be integer > 0

@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface TransactionRepository extends MongoRepository<Transaction, String> {
 
-    public List<Transaction> findByCustomer(int customer);
-    public List<Transaction> findByAccount(int acount);
+    public List<Transaction> findByCustomerOrderByDateOfTransactionDesc(int customer);
+    public List<Transaction> findByAccountOrderByDateOfTransactionDesc(int acount);
 
 }

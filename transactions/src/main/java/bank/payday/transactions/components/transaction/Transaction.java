@@ -3,6 +3,7 @@ package bank.payday.transactions;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.annotation.Id;
 
 @Document
@@ -18,7 +19,8 @@ public class Transaction {
     private int account;
 
     // @Indexed(direction = IndexDirection.ASCENDING)
-    private long date_of_transaction;
+    @Field("date_of_transaction")
+    private long dateOfTransaction;
 
     private int amount;
     private String description;
@@ -28,15 +30,15 @@ public class Transaction {
     public Transaction(Transaction t) {
         this.customer            = t.getCustomer();
         this.account             = t.getAccount();
-        this.date_of_transaction = t.getDate_of_transaction();
+        this.dateOfTransaction   = t.getDateOfTransaction();
         this.amount              = t.getAmount();
         this.description         = t.getDescription();
     }
 
-    public Transaction(int customer, int account, long date_of_transaction, int amount, String description) {
+    public Transaction(int customer, int account, long dateOfTransaction, int amount, String description) {
         this.customer            = customer;
         this.account             = account;
-        this.date_of_transaction = date_of_transaction;
+        this.dateOfTransaction   = dateOfTransaction;
         this.amount              = amount;
         this.description         = description;
     }
@@ -65,12 +67,12 @@ public class Transaction {
         return this.account;
     }
 
-    public void setDate_of_transaction(long date_of_transaction) {
-        this.date_of_transaction = date_of_transaction;
+    public void setDateOfTransaction(long dateOfTransaction) {
+        this.dateOfTransaction = dateOfTransaction;
     }
 
-    public long getDate_of_transaction() {
-        return this.date_of_transaction;
+    public long getDateOfTransaction() {
+        return this.dateOfTransaction;
     }
 
     public void setAmount(int amount) {

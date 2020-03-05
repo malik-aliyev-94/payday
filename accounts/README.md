@@ -38,7 +38,7 @@ docker build -t accounts-service .
 ```
 - Run docker container
 ```
-docker container run -p 9000:9000 accounts-service
+docker container run -p 9001:9001 accounts-service
 ```
 !!! MYSQL_HOST must be provided while running with docker or docker container localhost access must be configured in order to connect to the MySQL instance on localhost
 
