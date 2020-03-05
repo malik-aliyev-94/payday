@@ -32,7 +32,7 @@ public class AccountController {
 	public ResponseEntity<ApiResponse> getAllAccounts(@PathVariable("customer") int customer, @PathVariable("type") String type) {
 		try {
 			List<Account> accounts = new ArrayList<Account>();
-			accountRepository.findByCustomerAndTypeAndStatus(customer, type, 1).forEach(accounts::add);
+			accountRepository.findByCustomerAndTypeAndStatusOrderByIdDesc(customer, type, 1).forEach(accounts::add);
 
 			if (accounts.isEmpty()) {
 				ApiResponse response = new ApiResponse(accounts, null);

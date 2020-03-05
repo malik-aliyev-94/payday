@@ -26,6 +26,8 @@ docker run -p 3306:3306 -d --name mysql -e MYSQL_ROOT_PASSWORD=password mysql:5.
 
 If no MYSQL_HOST argument provided, service will try to connect to the local running instance of MySQL server (```spring.datasource.url = jdbc:mysql://${MYSQL_HOST:localhost}:3306/payday_customers```)
 
+Execute ```CREATE DATABASE IF NOT EXISTS payday_customers;``` SQL command in MySQL shell to create a database.
+
 ## Containerizing
 - Build the package 
 ```
