@@ -75,9 +75,8 @@ Content-Type application/json
 Required JSON fields: customer (needed for validation)
 ```
 
-```
-
 All REST API-s with success status codes returns the JSON object in the following format:
+
 ```
 {
     data: REQUESTED_DATA
