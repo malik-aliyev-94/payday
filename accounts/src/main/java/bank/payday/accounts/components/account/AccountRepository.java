@@ -9,6 +9,6 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
     // find credit account
     // block account
 
-    public List<Account> findByCustomerAndType(int customer, String type);
+    public List<Account> findByCustomerAndTypeAndStatus(int customer, String type, int status);
 
 }

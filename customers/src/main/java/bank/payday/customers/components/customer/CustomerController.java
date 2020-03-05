@@ -71,7 +71,7 @@ public class CustomerController {
 
 		if ((phone == null || email == null) && password == null) {
 			response.addError("Please enter all required credentials.");
-			return new ResponseEntity<>(response, HttpStatus.EXPECTATION_FAILED);
+			return new ResponseEntity<>(response, HttpStatus.OK);
 		}
 
 		Optional<Customer> customerData;
@@ -89,7 +89,7 @@ public class CustomerController {
 				return new ResponseEntity<>(new ApiResponse(customerData.get(), null), HttpStatus.OK);
 			} else {
 				response.addError("Check login credentials.");
-				return new ResponseEntity<>(response, HttpStatus.EXPECTATION_FAILED);
+				return new ResponseEntity<>(response, HttpStatus.OK);
 			}
 
 			
@@ -113,7 +113,7 @@ public class CustomerController {
 			
 			if ( count > 0 ) { // not unique
 				errors.add("Customer exists.");
-				return new ResponseEntity<>(new ApiResponse(null, errors), HttpStatus.EXPECTATION_FAILED);
+				return new ResponseEntity<>(new ApiResponse(null, errors), HttpStatus.OK);
 			} else {
 				u.encPassword();
 				customerRepository.save(u);
@@ -121,7 +121,7 @@ public class CustomerController {
 			}
 			
 		} else {
-			return new ResponseEntity<>(new ApiResponse(null, errors), HttpStatus.EXPECTATION_FAILED);
+			return new ResponseEntity<>(new ApiResponse(null, errors), HttpStatus.OK);
 		}
     }
 
@@ -149,7 +149,7 @@ public class CustomerController {
 				customerRepository.save(_customer);
 				return new ResponseEntity<>(new ApiResponse(_customer, null), HttpStatus.OK);
 			} else {
-				return new ResponseEntity<>(new ApiResponse(null, errors), HttpStatus.EXPECTATION_FAILED);
+				return new ResponseEntity<>(new ApiResponse(null, errors), HttpStatus.OK);
 			}
 		} else {
 			e.add("Not found error.");

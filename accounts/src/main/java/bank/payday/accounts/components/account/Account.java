@@ -32,7 +32,11 @@ public class Account {
 	@Pattern(regexp = "(credit)|(debit)", message="Only \"credit\" and \"debit\" values are acceptable as a type.")
 	private String type;
 
+	private int status;
+
 	private long date_of_creation;
+
+	private String accn;
 	
 	public Account(){}
     
@@ -57,6 +61,14 @@ public class Account {
 		this.id = id;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public int getCustomer() {
 		return customer;
 	}
@@ -79,6 +91,14 @@ public class Account {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getAccn() {
+		return accn;
+	}
+
+	public void setAccn(String accn) {
+		this.accn = accn;
 	}
 
 	public void setDate_of_creation(long date_of_creation) {
