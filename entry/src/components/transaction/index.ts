@@ -31,13 +31,13 @@ export default {
           const res = await axios.get(URL);
           response  = res.data;
         } else {
-          throw new Error("Account not found.");
+          // throw new Error("Account not found.");
         }
         
         if (response.data && response.data.length) {
           transactions = response.data;
         } if (response.errors) {
-          throw new Error(response.errors[0]);
+          // throw new Error(response.errors[0]);
         }
 
         return transactions;

@@ -23,7 +23,7 @@ export default {
         if (response.data && response.data.length) {
           customers = response.data;
         } if (response.errors) {
-          throw new Error(response.errors[0]);
+          // throw new Error(response.errors[0]);
         }
 
         return customers;
@@ -40,7 +40,7 @@ export default {
         if (response.data && response.data.id) {
           customer = response.data;
         } if (response.errors) {
-          throw new Error(response.errors[0]);
+          // throw new Error(response.errors[0]);
         }
 
         return customer;
@@ -60,7 +60,7 @@ export default {
         if (response.data && response.data.length) {
           accounts = response.data;
         } if (response.errors) {
-          throw new Error(response.errors[0]);
+          // throw new Error(response.errors[0]);
         }
 
         return accounts;
@@ -77,7 +77,7 @@ export default {
         if (response.data && response.data.length) {
           accounts = response.data;
         } if (response.errors) {
-          throw new Error(response.errors[0]);
+          // throw new Error(response.errors[0]);
         }
 
         return accounts;

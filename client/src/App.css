@@ -1,0 +1,39 @@
+.screen {
+  padding: 20px;
+  min-width: 100vw;
+  /* min-height: 100vh; */
+}
+.flex {
+  display: flex;
+}
+.flexbox {
+  display: flex;
+}
+.flexbox {
+  justify-content: space-between;
+}
+.flex > div {
+  flex: 1;
+  margin-right: 10px;
+}
+.flex > div:last-child {
+  margin-right: 0;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  max-width: 800px;
+  padding: 10px;
+  background: #f2f2f2;
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+h3 {
+  margin-top: 0;
+}
+label {
+  white-space: nowrap;
+}

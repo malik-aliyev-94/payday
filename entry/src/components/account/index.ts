@@ -24,7 +24,7 @@ export default {
         if (response.data && response.data.length) {
           accounts = response.data;
         } if (response.errors) {
-          throw new Error(response.errors[0]);
+          // throw new Error(response.errors[0]);
         }
 
         return accounts;
@@ -45,7 +45,7 @@ export default {
         if (response.data && response.data.length) {
           transactions = response.data;
         } if (response.errors) {
-          throw new Error(response.errors[0]);
+          // throw new Error(response.errors[0]);
         }
 
         return transactions;
