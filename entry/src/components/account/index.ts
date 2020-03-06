@@ -4,7 +4,7 @@ import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 
 import { APP_SECRET, getUserId, getUserInfo } from '../../utils';
-import types from './types.ts';
+import types from './types';
 
 export default {
   types,
