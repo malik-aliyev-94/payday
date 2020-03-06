@@ -136,8 +136,59 @@ npm run start
 ```
 Also do not forget in the ./client-app/src/App.js file set the GraphQL server url (line 11) to http://MINIKUBE_IP:4000
 
+## Why GraphQL
+Because at the end you can get all information you need with a such beautiful query :D
+```
+query {
+  customer {
+    id 
+    name 
+    last_name
+    phone
+    gender
+    date_of_birth
+    email 
+    debitAccounts {
+      id 
+      accn
+      name
+      transactions {
+        id
+        description
+        date_of_transaction
+        amount
+      }
+    }
+    creditAccounts {
+      id
+      accn
+      name
+      transactions {
+        id
+        description
+        date_of_transaction
+        amount
+      }
+    }
+  }
+}
+```
+
+## GraphQL Queries
 
 
-## Why ?
+
+## Notifications
+- Use real email addresses while signing up. You will receive emails from no-reply@payday.local
+- SendGrid 3-rd party service have been used to send email notifications.
 
 ## Interesting
+- I have never use spring and kubernetes before
+- I have spent 2 days for composing README files and 3 hours for the client-app development :D
+- I tried to use a component based approach. For example in GraphQL server all modules are components that contain schema definitions, models, resolvers etc. Also with spring boot Controllers, Repositories and etc. are structured based on components.
+
+## What can be improved
+- Implementing CI/CD solutions (GitHub hooks, Jenkins etc.)
+- More advanced JWT implementation (with refresh token, expiration etc.)
+- More advanced validating 
+- In this project I have connected accounts and customers services to the same database for simplicity. It would be better to separate them also. 
