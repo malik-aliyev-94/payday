@@ -20,7 +20,7 @@ payday | mongo-service         | 27017 | mongo                               |
 
 The final architecture is as in the following pic.
 
-![architecture][./assets/architecture.png]
+![architecture](./assets/architecture.png)
 
 ## Why ?
 
