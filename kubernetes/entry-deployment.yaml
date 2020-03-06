@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: entry-service
+  labels:
+    app: payday
+spec:
+  # replicas: 1
+  selector:
+    matchLabels:
+      app: payday
+  template:
+    metadata:
+      labels:
+        app: payday
+    spec:
+      containers:
+      - name: entry-service
+        image: malikaliyev94/entry-service:latest
+        ports:
+        - containerPort: 4000
+          protocol: TCP

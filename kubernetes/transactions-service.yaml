@@ -4,14 +4,14 @@ metadata:
   name: transactions-service
 spec:
   selector:
-    app: transactions-service
+    app: payday
   ports:
     - name: port1
       protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 9002
+      targetPort: 9002
     - name: port2
       protocol: TCP
       port: 27017
       targetPort: 27017
-  type: NodePort
+  # type: NodePort

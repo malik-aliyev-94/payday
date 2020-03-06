@@ -14,8 +14,8 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: customers-service
-          servicePort: 9000
+          serviceName: entry-service
+          servicePort: 4000
       # - path: /
       #   backend:
       #     serviceName: transactions-service

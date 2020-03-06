@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accounts-service
+  labels:
+    app: payday
+spec:
+  # replicas: 1
+  selector:
+    matchLabels:
+      app: payday
+  template:
+    metadata:
+      labels:
+        app: payday
+    spec:
+      containers:
+      - name: accounts-service
+        image: malikaliyev94/accounts-service:latest
+        env:
+            - name: MYSQL_HOST
+              value: mysql-database
+        ports:
+        - containerPort: 9001
+          protocol: TCP

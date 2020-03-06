@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: customers-service-database
+  name: mysql-database
   labels:
     app: payday
 spec:
@@ -17,7 +17,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: customers-service-database
+  name: mysql-database
   labels:
     app: payday
 spec:
@@ -34,17 +34,10 @@ spec:
     spec:
       containers:
         - image: mysql:5.7
-          name: customers-service-database
+          name: mysql-database
           env:
-            # - name: MYSQL_USER
-            #   value: michaelbolton
-            # - name: MYSQL_PASSWORD
-            #   value: password
             - name: MYSQL_ROOT_PASSWORD
               value: password
-            # - name: MYSQL_DATABASE
-            #   value: dockercon2017
-
           ports:
             - containerPort: 3306
               name: db

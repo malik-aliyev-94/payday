@@ -3,22 +3,22 @@ kind: Deployment
 metadata:
   name: transactions-service
   labels:
-    app: transactions-service
+    app: payday
 spec:
-  replicas: 1
+  # replicas: 1
   selector:
     matchLabels:
-      app: transactions-service
+      app: payday
   template:
     metadata:
       labels:
-        app: transactions-service
+        app: payday
     spec:
       containers:
       - name: transactions-service
-        image: malikaliyev94/transactions-service:v1
+        image: malikaliyev94/transactions-service:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 9002
           protocol: TCP
       - name: mongo
         image: mongo

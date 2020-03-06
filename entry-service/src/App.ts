@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { request } from 'graphql-request';
 
-const _c = require('./config.js');
+const _c = require('./config');
 
 const notifyGQL = (message) => {
   console.log(`#_GQL_#: ${message}`);

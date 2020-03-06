@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notifications-service
+  labels:
+    app: payday
+spec:
+  # replicas: 1
+  selector:
+    matchLabels:
+      app: payday
+  template:
+    metadata:
+      labels:
+        app: payday
+    spec:
+      containers:
+      - name: notifications-service
+        image: malikaliyev94/notifications-service:latest
+        ports:
+        - containerPort: 9003
+          protocol: TCP
