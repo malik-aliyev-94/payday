@@ -18,6 +18,10 @@ payday | client-service        | 3000  | malikaliyev94/client-service        | c
 payday | mysql-service         | 3306  | mysql:5.7                           | 
 payday | mongo-service         | 27017 | mongo                               | 
 
+The final architecture is as in the following pic.
+
+![architecture][./assets/architecture.png]
+
 ## Why ?
 
 ## Interesting
