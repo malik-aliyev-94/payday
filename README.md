@@ -1,11 +1,11 @@
 # PayDay Bank
 
-## Description
-
 ## Deployment
 We will use kubernetes for a Microservices Orchestration.
 Ready to deploy docker images are build and pushed to hub. 
 Anyway, if you want to run services separately and test them, you can read README files inside each service directory.
+
+Also you can find all REST endpoints inside each directories
 
 app | service-name | port | image | description
 --- | --- | --- | --- | ---
