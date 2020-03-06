@@ -5,7 +5,7 @@ We will use kubernetes for a Microservices Orchestration.
 Ready to deploy docker images are build and pushed to hub. 
 Anyway, if you want to run services separately and test them, you can read README files inside each service directory.
 
-Also you can find all REST endpoints inside each directories
+Also you can find all REST endpoints according every service inside its directory.
 
 app | service-name | port | image | description
 --- | --- | --- | --- | ---
@@ -199,7 +199,7 @@ mutation {
     }
 }
 ```
-After succesfully signing in and logined in you get a token. Send this token in header (Bearer token) with every request.
+After succesfully signing in and signing up you will get the token. Send this token in header (Bearer token) with every request in prder to authorise your requests.
 - Create new account
 ```
 mutation {
@@ -447,3 +447,5 @@ https://youtu.be/mV9CZ8F-lL0
 - More advanced JWT implementation (with refresh token, expiration etc.)
 - More advanced validating 
 - In this project I have connected accounts and customers services to the same database for simplicity. It would be better to separate them also. 
+- For deploying and testing to be easy we are not usung any Volume configuration with kubernetes. In real projects it is necessary for statefull pods (MySQL for ex.)
+- We are passing secrets as plain texts inside deployment configuration files. Kubernetes secretes must be used instead.
