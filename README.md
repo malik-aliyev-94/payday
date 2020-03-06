@@ -174,8 +174,263 @@ query {
 }
 ```
 
-## GraphQL Queries
+Also GraphQL is one of the best suitable solutions for mobile api backends.
 
+## GraphQL Queries
+- Signup example
+```
+mutation {
+  signup(name: "Customer", last_name: "Cust", password: "123456", email: "customer1@gmail.com", gender: "man", phone: "9945175783570", date_of_birth:"1994-11-11") {
+    customer {
+      id
+    }
+    token
+  }
+}
+```
+- Login example
+```
+mutation {
+	login(login:"994517578357", password: "abc123") {
+        customer {
+            id
+        }
+        token
+    }
+}
+```
+After succesfully signing in and logined in you get a token. Send this token in header (Bearer token) with every request.
+- Create new account
+```
+mutation {
+    createAccount(name: "Account #1", type: "debit") {
+        customer
+        name
+        type
+    }
+}
+```
+- Disable account mutation
+```
+mutation {
+  disableAccount(id: 9) {
+    id
+  }
+}
+```
+- The following query gets authorized customer information with its accounts and transactions in one request
+```
+query {
+  customer {
+    id 
+    name 
+    last_name
+    phone
+    gender
+    date_of_birth
+    email 
+    debitAccounts {
+      id 
+      accn
+      name
+      transactions {
+        id
+        description
+        date_of_transaction
+        amount
+      }
+    }
+    creditAccounts {
+      id
+      accn
+      name
+      transactions {
+        id
+        description
+        date_of_transaction
+        amount
+      }
+    }
+  }
+}
+```
+Example response
+```
+{
+  "data": {
+    "customer": {
+      "id": "2",
+      "name": "Malik",
+      "last_name": "Aliyev",
+      "phone": "994517578357",
+      "gender": "man",
+      "date_of_birth": "1994-08-11",
+      "email": "malik.aliyev.94@gmail.com",
+      "debitAccounts": [
+        {
+          "id": "16",
+          "accn": "PYR95KL1AUBL",
+          "name": "My New Account",
+          "transactions": []
+        },
+        {
+          "id": "11",
+          "accn": "EMVUVLXEQO48",
+          "name": "",
+          "transactions": []
+        },
+        {
+          "id": "9",
+          "accn": "ZO7NL9404OYZ",
+          "name": "Credit lorem",
+          "transactions": []
+        },
+        {
+          "id": "4",
+          "accn": "ABCDEF2436YH",
+          "name": "Account #1",
+          "transactions": [
+            {
+              "id": "5e60cc6010ba3f1e0af708dc",
+              "description": "Money transfer",
+              "date_of_transaction": null,
+              "amount": -30
+            },
+            {
+              "id": "5e60cb8f10ba3f1e0af708db",
+              "description": null,
+              "date_of_transaction": null,
+              "amount": 45
+            }
+          ]
+        }
+      ],
+      "creditAccounts": [
+        {
+          "id": "15",
+          "accn": "U1KX9QVL9LJI",
+          "name": "My New Account",
+          "transactions": [
+            {
+              "id": "5e6251756e7f7e7d983498df",
+              "description": "test",
+              "date_of_transaction": null,
+              "amount": 10
+            }
+          ]
+        },
+        {
+          "id": "12",
+          "accn": "4DNP3G21S717",
+          "name": "Test acc 1",
+          "transactions": []
+        },
+        {
+          "id": "10",
+          "accn": "7OOSD043SQ2R",
+          "name": "Account #3",
+          "transactions": [
+            {
+              "id": "5e61340710ba3f1e0af708de",
+              "description": "Tr 1",
+              "date_of_transaction": null,
+              "amount": -10
+            },
+            {
+              "id": "5e6133e810ba3f1e0af708dd",
+              "description": "Tr 1",
+              "date_of_transaction": null,
+              "amount": 10
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+You can compose any GraphQL request based on the below schema definitions
+
+```
+type Customer {
+    id: ID!
+    name: String!
+    last_name: String!
+    phone: String!
+    email: String!
+    gender: String!
+    date_of_birth: String!
+    debitAccounts: [Account],
+    creditAccounts: [Account]
+}
+type AuthPayload {
+    token: String
+    customer: Customer 
+}
+
+extend type Query {
+    customers: [Customer]
+    customer: Customer
+}
+extend type Mutation {
+    signup(name: String!, last_name: String!, password: String!, email: String!, gender: String!, phone: String!, date_of_birth: String!): AuthPayload
+    login(login: String!, password: String!): AuthPayload
+}
+extend type Subscription {
+    customerLogin: Customer!
+}
+```
+
+```
+type Account {
+    id: ID!
+    customer: Int!
+    accn: String!
+    name: String!
+    type: String!
+    date_of_creation: Int!
+    status: Int!
+    transactions: [Transaction]
+}
+
+extend type Query {
+    accounts(type: String!): [Account]
+}
+extend type Mutation {
+    createAccount(name: String!, type: String!): Account
+    disableAccount(id: ID!): Account
+}
+```
+
+```
+type Transaction {
+    id: ID!
+    customer: Int!
+    account: Int!
+    description: String
+    date_of_transaction: String
+    amount: Int!
+}
+
+extend type Query {
+    transactions(account: ID!): [Transaction]
+}
+extend type Mutation {
+    createTransaction(account: ID!, amount: Int!, description: String): Transaction
+}
+```
+
+GraphQL playground will be available from ```payday.local``` address
+
+![playground](./assets/playground.png)
+
+This is a youtube link demonstrating client app.
+You can sign up, sign in, create accounts, transactions and see overall information about user.
+
+https://youtu.be/mV9CZ8F-lL0
+
+[![client](./assets/client.png)](https://youtu.be/mV9CZ8F-lL0)
 
 
 ## Notifications

@@ -4,7 +4,7 @@ type Transaction {
     customer: Int!
     account: Int!
     description: String
-    date_of_transaction: String!
+    date_of_transaction: String
     amount: Int!
 }
 
