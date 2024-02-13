@@ -4,7 +4,7 @@ from sendgrid.helpers.mail import Mail
 from flask import Flask, escape, request
 from gevent.pywsgi import WSGIServer
 
-SENDGRID_API_KEY = "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"
+SENDGRID_API_KEY = ""
 
 app = Flask(__name__)
 
